@@ -11,5 +11,5 @@ a {
 }
 
 body {
-    cursor: url("assets/images/cursor.webp"), url("assets/images/cursor.webp"), url("assets/images/cursor.webp"), auto;
+    cursor: url("assets/images/cursor.webp"), url("assets/images/cursor.webp"), url("assets/images/cursor.webp"), default;
 }
