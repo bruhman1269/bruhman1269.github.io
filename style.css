@@ -13,8 +13,3 @@ a {
 body {
     cursor: url("assets/images/cursor.webp"), url("assets/images/cursor.webp"), url("assets/images/cursor.webp"), default;
 }
-
-html {
-    background-color: black;
-    font-family: monospace;
-}
