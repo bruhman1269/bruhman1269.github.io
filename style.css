@@ -13,3 +13,7 @@ a {
 body {
     cursor: url("assets/images/cursor.jpg"), url("assets/images/cursor.jpg"), url("assets/images/cursor.jpg"), auto;
 }
+
+html {
+  scroll-behavior: smooth;
+}
