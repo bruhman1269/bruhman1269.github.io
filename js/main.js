@@ -52,7 +52,7 @@ loader.load(
 
 //Instantiate a new renderer and set its size
 const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows for the transparent background
-renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+renderer.setSize(window.innerWidth - 20, window.innerHeight - 20);
 
 //Add the renderer to the DOM
 container.appendChild(renderer.domElement);
@@ -121,6 +121,6 @@ function randomHex() {
 //Start the 3D rendering
 window.addEventListener("resize", function() {
   camera.updateProjectionMatrix(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-  //renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+  renderer.setSize(window.innerWidth - 20, window.innerHeight - 20)
 })
 animate();
