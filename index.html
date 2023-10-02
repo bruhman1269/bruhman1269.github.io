@@ -5,51 +5,13 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <div>
-        <body>
-            <p>walid hijazi website</p>
-            
-            <script>
-                import * as THREE from 'packages/three';
-                
-                const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+    <body>
+        <p>walid hijazi website</p>
 
-                const renderer = new THREE.WebGLRenderer();
-                renderer.setSize( window.innerWidth, window.innerHeight );
-                document.body.appendChild( renderer.domElement );
+        <main>
+            <div id="container3D"></div>
+        </main>
 
-                import { GLTFLoader } from 'packages/three/addons/loaders/GLTFLoader.js';
-
-                const loader = new GLTFLoader();
-
-                loader.load( 'crucifix.gltf', function ( gltf ) {
-
-                    scene.add( gltf.scene );
-
-                }, undefined, function ( error ) {
-
-                    console.error( error );
-
-                } );
-
-
-            </script>
-
-
-
-        </body>
-    </div>
-
-    <br>
-    <br>
-    <br>
-<!--
-    <div>
-        <body>
-            <p>Projects</p>
-            <a href="pixelplanet.html">Pixel Planet</a>
-        </body>
-    </div>
--->
+        <script type="module" src="js/main.js"></script>
+    </body>
 </html>
