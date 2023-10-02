@@ -82,12 +82,6 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-//Add a listener to the window, so we can resize the window and the camera
-window.addEventListener("resize", function () {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth / 2, window.innerHeight) / 2;
-});
 
 //add mouse position listener, so we can make the eye move
 document.onmousemove = (e) => {
