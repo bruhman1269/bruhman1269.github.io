@@ -46,7 +46,7 @@ loader.load(
 
 //Instantiate a new renderer and set its size
 const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows for the transparent background
-renderer.setSize(500, 500);
+renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
 
 //Add the renderer to the DOM
 document.getElementById("container3D").appendChild(renderer.domElement);
@@ -76,8 +76,8 @@ function animate() {
   //Make the eye move
   if (object && objToRender === "eye") {
     //I've played with the constants here until it looked good 
-    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3, 0.05);
-    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight, 0.05);
+    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3 * 2, 0.05);
+    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight * 2, 0.05);
   }
   renderer.render(scene, camera);
 }
@@ -86,7 +86,7 @@ function animate() {
 window.addEventListener("resize", function () {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(window.innerWidth / 2, window.innerHeight) / 2;
 });
 
 //add mouse position listener, so we can make the eye move
