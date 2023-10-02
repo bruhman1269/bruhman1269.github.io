@@ -87,8 +87,8 @@ function animate() {
   //Make the eye move
   if (object && objToRender === "eye") {
     //I've played with the constants here until it looked good 
-    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3 * 2, 0.1);
-    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight * 2, 0.1);
+    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3, 0.1);
+    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight, 0.1);
     //object.rotation.x = clamp(object.rotation.x, -1.2, 1.6);
     //object.rotation.y = clamp(object.rotation.y, -3, 0)
     //document.getElementById("output").innerText = object.rotation.y.toString();
