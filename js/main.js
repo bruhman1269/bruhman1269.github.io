@@ -35,9 +35,9 @@ loader.load(
   function (gltf) {
     //If the file is loaded, add it to the scene
     object = gltf.scene;
-    object.scale.x = 2;
-    object.scale.y = 2;
-    object.scale.z = 2;
+    object.scale.x = 10;
+    object.scale.y = 10;
+    object.scale.z = 10;
     scene.add(object);
   },
   function (xhr) {
