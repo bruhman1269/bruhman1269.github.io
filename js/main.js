@@ -4,6 +4,7 @@ import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/js
 
 import { GLTFLoader } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js";
 
+
 //Create a Three.JS Scene
 const scene = new THREE.Scene();
 //create a new camera with positions and angles
@@ -75,8 +76,8 @@ function animate() {
   //Make the eye move
   if (object && objToRender === "eye") {
     //I've played with the constants here until it looked good 
-    object.rotation.y = -3 + mouseX / window.innerWidth * 3;
-    object.rotation.x = -1.2 + mouseY * 2.5 / window.innerHeight;
+    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3, 0.05);
+    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight, 0.05);
   }
   renderer.render(scene, camera);
 }
@@ -94,5 +95,12 @@ document.onmousemove = (e) => {
   mouseY = e.clientY;
 }
 
+
+function lerp (start, end, amt){
+    return (1-amt)*start+amt*end
+}
+
 //Start the 3D rendering
 animate();
+
+
