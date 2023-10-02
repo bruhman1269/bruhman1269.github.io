@@ -14,6 +14,8 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 let mouseX = window.innerWidth / 2;
 let mouseY = window.innerHeight / 2;
 
+let dt = 3;
+
 //Keep the 3D object on a global variable so we can access it later
 let object;
 
@@ -25,6 +27,7 @@ let objToRender = 'eye';
 
 //Instantiate a loader for the .gltf file
 const loader = new GLTFLoader();
+const container = document.getElementById("container3D");
 
 //Load the file
 loader.load(
@@ -32,6 +35,9 @@ loader.load(
   function (gltf) {
     //If the file is loaded, add it to the scene
     object = gltf.scene;
+    object.scale.x = 2;
+    object.scale.y = 2;
+    object.scale.z = 2;
     scene.add(object);
   },
   function (xhr) {
@@ -49,16 +55,21 @@ const renderer = new THREE.WebGLRenderer({ alpha: true }); //Alpha: true allows 
 renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
 
 //Add the renderer to the DOM
-document.getElementById("container3D").appendChild(renderer.domElement);
+container.appendChild(renderer.domElement);
 
 //Set how far the camera will be from the 3D model
 camera.position.z = objToRender === "dino" ? 25 : 500;
 
 //Add lights to the scene, so we can actually see the 3D model
-const topLight = new THREE.DirectionalLight(0xffffff, 1); // (color, intensity)
+const topLight = new THREE.DirectionalLight(randomHex(), 1); // (color, intensity)
 topLight.position.set(500, 500, 500) //top-left-ish
 topLight.castShadow = true;
 scene.add(topLight);
+
+const bottomLight = new THREE.DirectionalLight(randomHex(), 1); // (color, intensity)
+bottomLight.position.set(500, -500, 500) //top-left-ish
+bottomLight.castShadow = true;
+scene.add(bottomLight);
 
 const ambientLight = new THREE.AmbientLight(0x333333, objToRender === "dino" ? 5 : 1);
 scene.add(ambientLight);
@@ -76,8 +87,11 @@ function animate() {
   //Make the eye move
   if (object && objToRender === "eye") {
     //I've played with the constants here until it looked good 
-    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3 * 2, 0.05);
-    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight * 2, 0.05);
+    object.rotation.y = lerp(object.rotation.y, -3 + mouseX / window.innerWidth * 3 * 2, 0.1);
+    object.rotation.x = lerp(object.rotation.x, -1.2 + mouseY * 2.5 / window.innerHeight * 2, 0.1);
+    //object.rotation.x = clamp(object.rotation.x, -1.2, 1.6);
+    //object.rotation.y = clamp(object.rotation.y, -3, 0)
+    //document.getElementById("output").innerText = object.rotation.y.toString();
   }
   renderer.render(scene, camera);
 }
@@ -94,7 +108,19 @@ function lerp (start, end, amt){
     return (1-amt)*start+amt*end
 }
 
+function clamp(num, min, max) {
+  return Math.min(Math.max(num, min), max);
+};
+
+
+function randomHex() {
+  return Math.random() * 16777215;
+}
+
+
 //Start the 3D rendering
+window.addEventListener("resize", function() {
+  camera.updateProjectionMatrix(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  //renderer.setSize(window.innerWidth / 2, window.innerHeight / 2);
+})
 animate();
-
-

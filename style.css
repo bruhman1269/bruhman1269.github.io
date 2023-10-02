@@ -17,3 +17,13 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+button {
+    border: none;
+    padding: 12px 32px;
+    border-radius: 3px;
+    text-decoration: wavy;
+    font-size: 100;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
