@@ -38,6 +38,7 @@ loader.load(
     object.scale.x = 10;
     object.scale.y = 10;
     object.scale.z = 10;
+    object.position.x -= 10
     scene.add(object);
   },
   function (xhr) {
