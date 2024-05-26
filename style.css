@@ -20,10 +20,39 @@ html {
 
 button {
     border: none;
+    background-color: transparent;
+    overflow: hidden;
+    outline: none;
     padding: 12px 32px;
     border-radius: 3px;
     text-decoration: wavy;
     font-size: 100;
     font-family: 'Times New Roman', Times, serif;
     cursor: pointer;
+    scale: 0.5;
+}
+
+
+input {
+    scale: 1.22;
+}
+
+#parent {
+    text-align:center;
+    height:400px;
+    width:600px;
+}
+.block {
+    height:100px;
+    width:200px;
+    text-align:left;
+}
+.center {
+    margin:auto;
+}
+.left {
+    margin:auto auto auto 0;
+}
+.right {
+    margin:auto 0 auto auto;
 }
